@@ -24,7 +24,15 @@ namespace DictionaryPrac
             var lookUp = "Placeholder";
             while (lookUp != string.Empty)
             {
-                Console.WriteLine("Please ")
+                Console.WriteLine("Please enter a name you would like to look-up:");
+                lookUp = Console.ReadLine();
+                foreach (var item in myDictionary)
+                {
+                    if (item.Key == lookUp)
+                    {
+                        Console.WriteLine(item.Value);
+                    }
+                }
             }
 
 
