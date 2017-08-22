@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DictionaryPrac
 {
@@ -34,9 +35,23 @@ namespace DictionaryPrac
                     }
                 }
             }
-
-
-
+            string s = "abcabcabcdefab c a oo ija ;a ;skmdals kn";
+            Console.WriteLine(letterCount(s)['b'] == 4);
+            Console.WriteLine(letterCount(s).ContainsKey('z') == false);
+        }
+        public static Dictionary<char, int> letterCount(string s)
+        {
+            var lowerCase = s.ToLower().ToCharArray();
+            var charDictionary = new Dictionary<char, int>();
+            foreach (var item in lowerCase)
+            {
+                var count = lowerCase.Where(l => l == item).Count();
+                if (charDictionary.ContainsKey(item) == false)
+                {
+                    charDictionary.Add(item, count);
+                }
+            }
+            return charDictionary;
         }
     }
 }
