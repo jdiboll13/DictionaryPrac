@@ -27,11 +27,17 @@ namespace DictionaryPrac
             {
                 Console.WriteLine("Please enter a name you would like to look-up:");
                 lookUp = Console.ReadLine();
-                foreach (var item in myDictionary)
+                int phoneNumber = 0;
+                if (myDictionary.TryGetValue(lookUp, out phoneNumber))
                 {
-                    if (item.Key == lookUp)
+                    Console.WriteLine($"{phoneNumber}");
+                }
+                else if (lookUp != string.Empty)
+                {
+                    Console.WriteLine($"Have you tried:");
+                    foreach (var item in myDictionary)
                     {
-                        Console.WriteLine(item.Value);
+                        Console.WriteLine($"{item.Key}");
                     }
                 }
             }
